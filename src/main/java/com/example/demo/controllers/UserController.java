@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping(value= "/api/v1")
 public class UserController {
@@ -19,5 +21,11 @@ public class UserController {
         model.addAttribute("name", name);
         model.addAttribute("firstname", firstname);
         return "2-param/hello";
+    }
+
+    @RequestMapping(value = "/params")
+    public String listPerson(Model model, @RequestParam List<String> users ){
+        model.addAttribute("user", users);
+        return "Params/hello";
     }
 }
